@@ -1,4 +1,4 @@
-name: Build Benso.ch (Test)
+name: Build Benso.ch and Deploy test.benso.ch
 
 on:
   workflow_dispatch
@@ -34,13 +34,13 @@ jobs:
         run: npm run format
 
       - name: Build
-        run: npm run build -- --prefix-paths
+        run: npm run build
       
       - name: Publish
         uses: s0/git-publish-subdir-action@master
         env:
           REPO: self
-          BRANCH: test
+          BRANCH: page
           FOLDER: public
           SQUASH_HISTORY: true
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
