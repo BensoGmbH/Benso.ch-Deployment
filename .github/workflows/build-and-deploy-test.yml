@@ -47,6 +47,3 @@ jobs:
           FOLDER: public
           SQUASH_HISTORY: true
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      - name: Deploy to test
-        run: |
-          curl -X POST ${{ secrets.HOSTTECH_WEBHOOK_URL_TEST }}
