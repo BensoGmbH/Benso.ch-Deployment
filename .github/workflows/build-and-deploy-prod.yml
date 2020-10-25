@@ -1,0 +1,49 @@
+name: Build Benso.ch and Deploy benso.ch
+
+on:
+  workflow_dispatch
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  # This workflow contains a single job called "build"
+  build:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - name: Check-out Website
+        uses: actions/checkout@v2
+        with:
+          repository: BensoGmbH/benso.chV2
+          token: ${{ secrets.GH_SERVICE_ACCOUNT }}  
+
+      - name: Setup Node.js environment
+        uses: actions/setup-node@v2.1.2
+        with:
+          node-version: '10.x'
+      
+      - name: Install dependencies
+        run: npm install
+
+      - name: Install gatsby-cli
+        run: npm install -g gatsby-cli
+
+      - name: Format Code
+        run: npm run format
+
+      - name: Build Gatsby
+        run: GATSBY_ACTIVE_ENV=production npm run build
+        
+      - name: Publish to Repo
+        uses: s0/git-publish-subdir-action@master
+        env:
+          REPO: self
+          BRANCH: page-prod
+          FOLDER: public
+          SQUASH_HISTORY: true
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          
+      - name: Deploy
+        run: curl -X POST ${{ secrets.HOSTTECH_WEBHOOK_URL }}
