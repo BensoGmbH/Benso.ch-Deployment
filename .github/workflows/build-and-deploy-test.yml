@@ -1,4 +1,4 @@
-name: [test] Build Benso.ch and Deploy test.benso.ch
+name: "[test] Build Benso.ch and Deploy test.benso.ch"
 
 on:
   workflow_dispatch
