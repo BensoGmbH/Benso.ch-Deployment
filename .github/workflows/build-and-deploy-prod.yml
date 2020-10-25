@@ -1,4 +1,4 @@
-name: Build Benso.ch and Deploy benso.ch
+name: [prod] Build Benso.ch and Deploy benso.ch
 
 on:
   workflow_dispatch
