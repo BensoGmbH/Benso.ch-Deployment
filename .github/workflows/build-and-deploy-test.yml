@@ -4,7 +4,7 @@ on:
     inputs:
       branchname:
         description: 'Which branch, tag or SHA should be deployed?'
-        required: true
+        required: false
         default: ''
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
