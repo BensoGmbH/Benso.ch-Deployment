@@ -1,8 +1,11 @@
 name: "[test] Build Benso.ch and Deploy test.benso.ch"
-
 on:
-  workflow_dispatch
-
+  workflow_dispatch:
+    inputs:
+      branchname:
+        description: 'Which branch, tag or SHA should be deployed?'
+        required: true
+        default: ''
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   # This workflow contains a single job called "build"
@@ -17,7 +20,8 @@ jobs:
         uses: actions/checkout@v2
         with:
           repository: BensoGmbH/benso.chV2
-          token: ${{ secrets.GH_SERVICE_ACCOUNT }}  
+          token: ${{ secrets.GH_SERVICE_ACCOUNT }}
+          ref: ${{ github.event.inputs.an_input }}  
 
       - name: Setup Node.js environment
         uses: actions/setup-node@v2.1.2
