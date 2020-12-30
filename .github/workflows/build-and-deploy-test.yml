@@ -3,7 +3,7 @@ on:
   workflow_dispatch:
     inputs:
       branchname:
-        description: 'Which branch, tag or SHA should be deployed?'
+        description: 'Which branch, tag or SHA should be deployed? (empty for default branch)'
         required: false
         default: ''
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
@@ -21,7 +21,7 @@ jobs:
         with:
           repository: BensoGmbH/benso.chV2
           token: ${{ secrets.GH_SERVICE_ACCOUNT }}
-          ref: ${{ github.event.inputs.an_input }}  
+          ref: ${{ github.event.inputs.branchname }}  
 
       - name: Setup Node.js environment
         uses: actions/setup-node@v2.1.2
