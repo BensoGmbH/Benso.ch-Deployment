@@ -29,7 +29,7 @@ jobs:
           node-version: '14.x'
       
       - name: Install dependencies
-        run: SHARP_IGNORE_GLOBAL_LIBVIPS=true npm install
+        run: npm install
 
       - name: Install gatsby-cli
         run: npm install -g gatsby-cli
@@ -38,7 +38,7 @@ jobs:
         run: npm run format
 
       - name: Build
-        run: SHARP_IGNORE_GLOBAL_LIBVIPS=true GATSBY_ACTIVE_ENV=staging npm run build
+        run: GATSBY_ACTIVE_ENV=staging npm run build
       
       - name: Create CNAME File for GH Pages
         run: echo "test.benso.ch">./public/CNAME
