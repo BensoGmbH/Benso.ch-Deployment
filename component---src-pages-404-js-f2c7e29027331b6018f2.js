@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunkbenso_website=self.webpackChunkbenso_website||[]).push([[883],{429:function(e,t,n){n.r(t);var l=n(7294),a=n(1018);t.default=function(e){var t=e.location;return l.createElement(a.Z,{location:t,title:"404 - Not Found"},l.createElement("article",{id:"main"},l.createElement("header",null,l.createElement("h2",null,"Not Found"),l.createElement("p",null,"Not a Valid URL"))))}}}]);
+//# sourceMappingURL=component---src-pages-404-js-f2c7e29027331b6018f2.js.map
