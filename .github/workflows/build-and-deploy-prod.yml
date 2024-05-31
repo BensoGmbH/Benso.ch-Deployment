@@ -34,7 +34,7 @@ jobs:
         run: npm run format
 
       - name: Build Gatsby
-        run: npm run build:prod
+        run: npm run build:production
         
       - name: Publish to Repo
         uses: s0/git-publish-subdir-action@master
